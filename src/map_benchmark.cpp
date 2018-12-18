@@ -12,7 +12,7 @@
 #include <ctime>
 #include <iostream>
 
-
+const int LOOKUP_TIMES = 100000;
 
 std::unique_ptr<std::vector<int>> get_random_nums(int n) {
     using namespace std;
@@ -86,10 +86,10 @@ static void std_map_lookup_benchmark(benchmark::State &state) {
 
     std::map<int, int> m;
     insert_random_keyvalue(size, m);
-    auto random_indice_p = get_random_nums(size);
+    auto random_indice_p = get_random_nums(LOOKUP_TIMES);
 
     for (auto _ : state) {
-        for (int i = 0; i < size; ++i) {
+        for (int i = 0; i < LOOKUP_TIMES; ++i) {
             auto finded = m.find((*random_indice_p)[i]);
         }
     }
@@ -101,10 +101,10 @@ static void std_hashmap_lookup_benchmark(benchmark::State &state) {
 
     std::unordered_map<int, int> m;
     insert_random_keyvalue(size, m);
-    auto random_indice_p = get_random_nums(size);
+    auto random_indice_p = get_random_nums(LOOKUP_TIMES);
 
     for (auto _ : state) {
-        for (int i = 0; i < size; ++i) {
+        for (int i = 0; i < LOOKUP_TIMES; ++i) {
             auto finded = m.find((*random_indice_p)[i]);
         }
     }
@@ -126,10 +126,10 @@ static void interprocess_map_lookup_benchmark(benchmark::State &state) {
     int size = state.range(0);
     map_int &m = *segment.construct<map_int>("map")(std::less<int>(), alloc_inst);
     insert_random_keyvalue(size, m);
-    auto random_indice_p = get_random_nums(size);
+    auto random_indice_p = get_random_nums(LOOKUP_TIMES);
 
     for (auto _ : state) {
-        for (int i = 0; i < size; ++i) {
+        for (int i = 0; i < LOOKUP_TIMES; ++i) {
             auto finded = m.find((*random_indice_p)[i]);
         }
     }
@@ -150,10 +150,10 @@ static void interprocess_hashmap_lookup_benchmark(benchmark::State &state) {
     int size = state.range(0);
     map_int &m = *segment.construct<map_int>("map")(3,boost::hash<int>(), std::equal_to<int>(), alloc_inst);
     insert_random_keyvalue(size, m);
-    auto random_indice_p = get_random_nums(size);
+    auto random_indice_p = get_random_nums(LOOKUP_TIMES);
 
     for (auto _ : state) {
-        for (int i = 0; i < size; ++i) {
+        for (int i = 0; i < LOOKUP_TIMES; ++i) {
             auto finded = m.find((*random_indice_p)[i]);
         }
     }

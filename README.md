@@ -120,5 +120,5 @@ interprocess_hashmap_lookup_benchmark/262144    41644076 ns   40875647 ns       
 interprocess_hashmap_lookup_benchmark/2097152  440294224 ns  431269000 ns          2
 interprocess_hashmap_lookup_benchmark/8388608 3360580116 ns 2522784000 ns          1
 ```
-以上查询都是在大小为n的容器上查询n次的结果，因此消耗时长不是`logn`的增长很正常。
-hashmap在容器大时查询速度对比红黑树实现在键-值对数量大于百万后有明显速度优势，同时基于共享内存的hashmap性能与stl的hashmap速度差距大概差一倍
+以上是在大小为n的容器上进行100,000次查询的耗时
+hashmap在容器大时查询速度对比红黑树实现在键-值对数量大于百万后有明显速度优势，同时基于共享内存的hashmap性能与stl的hashmap差异不大，但是红黑树实现的速度差异非常大，基于共享内存的红黑树耗时增长接近现性

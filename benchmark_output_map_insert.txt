@@ -1,0 +1,16 @@
+std_map_insert_benchmark/8                           676 ns        659 ns     895038
+std_map_insert_benchmark/64                         6853 ns       6699 ns     107945
+std_map_insert_benchmark/512                       88112 ns      87198 ns       7987
+std_map_insert_benchmark/4096                    1182742 ns    1129625 ns        702
+std_map_insert_benchmark/32768                  10774647 ns   10720755 ns         49
+std_map_insert_benchmark/262144                190274704 ns  187901333 ns          3
+std_map_insert_benchmark/2097152              3089697449 ns 3062136000 ns          1
+std_map_insert_benchmark/8388608              17498073108 ns 16544949000 ns          1
+interprocess_map_insert_benchmark/8                14421 ns      14298 ns      50273
+interprocess_map_insert_benchmark/64              182366 ns     173048 ns       4580
+interprocess_map_insert_benchmark/512            1650061 ns    1633021 ns        420
+interprocess_map_insert_benchmark/4096          16415143 ns   16336649 ns         37
+interprocess_map_insert_benchmark/32768        306212350 ns  297832500 ns          2
+interprocess_map_insert_benchmark/262144      3540586618 ns 3460639000 ns          1
+interprocess_map_insert_benchmark/2097152     32036923355 ns 30844331000 ns          1
+interprocess_map_insert_benchmark/8388608     132493359831 ns 127182006000 ns          1
